@@ -161,104 +161,84 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="form-container">
-          <form method="post" action="{% url 'thanks' %}">
+          <form method="post">
             {% csrf_token %}
             
             <div class="row mb-3">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
-                  <label for="name">Ваше имя</label>
+                  {{ form.name }}
+                  <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                  {% if form.name.errors %}
+                  <div class="invalid-feedback d-block">
+                    {{ form.name.errors }}
+                  </div>
+                  {% endif %}
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Телефон" required>
-                  <label for="phone">Телефон</label>
+                  {{ form.phone }}
+                  <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                  {% if form.phone.errors %}
+                  <div class="invalid-feedback d-block">
+                    {{ form.phone.errors }}
+                  </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
             
             <div class="form-floating mb-3">
-              <select class="form-select" id="master" name="master" required>
-                <option value="" selected disabled>Выберите мастера</option>
-                {% for master in masters %}
-                <option value="{{ master.id }}">{{ master.first_name }} {{ master.last_name }}</option>
-                {% endfor %}
-              </select>
-              <label for="master">Мастер</label>
+              {{ form.master }}
+              <label for="{{ form.master.id_for_label }}">{{ form.master.label }}</label>
+              {% if form.master.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.master.errors }}
+              </div>
+              {% endif %}
             </div>
             
             <div class="form-floating mb-3">
-              <select class="form-select" id="service" name="service" required>
-                <option value="" selected disabled>Выберите услугу</option>
-                {% for service in services %}
-                <option value="{{ service.id }}">{{ service.name }} ({{ service.price }} ₽)</option>
-                {% endfor %}
-              </select>
-              <label for="service">Услуга</label>
+              {{ form.services }}
+              <label for="{{ form.services.id_for_label }}">{{ form.services.label }}</label>
+              {% if form.services.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.services.errors }}
+              </div>
+              {% endif %}
             </div>
             
             <div class="form-floating mb-3">
-              <input type="datetime-local" class="form-control" id="appointment_datetime" name="appointment_datetime" required>
-              <label for="appointment_datetime">Дата и время</label>
+              {{ form.appointment_datetime }}
+              <label for="{{ form.appointment_datetime.id_for_label }}">{{ form.appointment_datetime.label }}</label>
+              {% if form.appointment_datetime.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.appointment_datetime.errors }}
+              </div>
+              {% endif %}
             </div>
             
             <div class="form-floating mb-3">
-              <textarea class="form-control" id="comment" name="comment" placeholder="Комментарий" style="height: 100px"></textarea>
-              <label for="comment">Комментарий (необязательно)</label>
+              {{ form.comment }}
+              <label for="{{ form.comment.id_for_label }}">{{ form.comment.label }}</label>
+              {% if form.comment.errors %}
+              <div class="invalid-feedback d-block">
+                {{ form.comment.errors }}
+              </div>
+              {% endif %}
             </div>
+            
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+              {{ form.non_field_errors }}
+            </div>
+            {% endif %}
             
             <button type="submit" class="btn btn-pink w-100">
               <i class="bi bi-calendar-check me-2"></i>Записаться
             </button>
           </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Контакты -->
-<section id="contacts" class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 class="section-title">Контакты</h2>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="bi bi-geo-alt contact-icon"></i>
-            <div>
-              <h4>Адрес</h4>
-              <p>г. Ростов-на-Дону, ул. Примерная, д. 123</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="bi bi-telephone contact-icon"></i>
-            <div>
-              <h4>Телефон</h4>
-              <p>+7 (XXX) XXX-XX-XX</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="bi bi-clock contact-icon"></i>
-            <div>
-              <h4>Часы работы</h4>
-              <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="bi bi-instagram contact-icon"></i>
-            <div>
-              <h4>Instagram</h4>
-              <p>@karisha_pm</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3075482970897!2d37.618675!3d55.755826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0JrRgNC10LzQu9GM!5e0!3m2!1sru!2sru!4v1616683154092!5m2!1sru!2sru" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
