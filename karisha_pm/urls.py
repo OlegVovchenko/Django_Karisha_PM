@@ -7,6 +7,7 @@ from core import views
 urlpatterns = (
     [
         path('admin/', admin.site.urls),
+        path("", views.MainView.as_view(), name="main"),
         path("thanks/", views.ThanksView.as_view(), name="thanks"),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
