@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Салон красоты Karisha_PM{% endblock %}
+
+{% block content %}
+<!-- Главный баннер -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="hero-title">Добро пожаловать в салон красоты Karisha_PM</h1>
+        <p class="hero-subtitle">Мы создаем красоту и уверенность</p>
+        <a href="#orderForm" class="btn btn-pink mt-3">
+          <i class="bi bi-calendar-check me-2"></i>Записаться онлайн
+        </a>
+      </div>
+      <div class="col-md-6">
+        <img src="{% static 'images/salon-hero.jpg' %}" alt="Салон красоты" class="img-fluid hero-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О нас -->
+<section id="about" class="py-5 section-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{% static 'images/about-salon.jpg' %}" alt="О нашем салоне" class="img-fluid rounded-image">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title">О нашем салоне</h2>
+        <p class="section-text">
+          Салон красоты "Karisha_PM" — это место, где каждая женщина может почувствовать себя особенной. 
+          Мы предлагаем широкий спектр услуг по уходу за волосами, лицом и телом, 
+          используя только профессиональные косметические средства.
+        </p>
+        <p class="section-text">
+          Наши мастера — настоящие профессионалы своего дела, которые постоянно совершенствуют свои навыки 
+          и следят за последними тенденциями в мире красоты.
+        </p>
+        <div class="features mt-4">
+          <div class="feature-item">
+            <i class="bi bi-award feature-icon"></i>
+            <span>Профессиональные мастера</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-gem feature-icon"></i>
+            <span>Премиум косметика</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-heart feature-icon"></i>
+            <span>Индивидуальный подход</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Мастера -->
+<section id="masters" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Наши мастера</h2>
+    <p class="section-subtitle text-center mb-5">Профессионалы, которые воплотят ваши мечты в реальность</p>
+    
+    <div class="row">
+      {% for master in masters %}
+      <div class="col-md-4 mb-4">
+        <div class="master-card">
+          {% if master.photo %}
+          <img src="{{ master.photo.url }}" class="master-image" alt="{{ master.first_name }}">
+          {% else %}
+          <img src="{% static 'images/default-avatar.png' %}" class="master-image" alt="{{ master.first_name }}">
+          {% endif %}
+          <div class="master-info">
+            <h3 class="master-name">{{ master.first_name }} {{ master.last_name }}</h3>
+            <div class="master-services">
+              {% for service in master.services.all|slice:":3" %}
+              <span class="service-tag">{{ service.name }}</span>
+              {% endfor %}
+              {% if master.services.count > 3 %}
+              <span class="service-tag">и другие</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>Скоро здесь появится информация о наших мастерах</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Услуги -->
+<section id="services" class="py-5 section-light">
+  <div class="container">
+    <h2 class="section-title text-center">Наши услуги</h2>
+    <p class="section-subtitle text-center mb-5">Всё для вашей красоты и комфорта</p>
+    
+    <div class="row">
+      {% for service in services %}
+      <div class="col-md-4 mb-4">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-scissors"></i>
+          </div>
+          <h3 class="service-title">{{ service.name }}</h3>
+          <p class="service-description">{{ service.description|truncatechars:100 }}</p>
+          <div class="service-details">
+            <div class="service-price">{{ service.price }} ₽</div>
+            <div class="service-duration"><i class="bi bi-clock"></i> {{ service.duration }} мин</div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>Скоро здесь появится информация о наших услугах</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Галерея работ -->
+<section id="portfolio" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Наши работы</h2>
+    <p class="section-subtitle text-center mb-5">Результаты, которыми мы гордимся</p>
+    
+    <div class="row gallery">
+      <div class="col-md-4 mb-4">
+        <div class="gallery-item">
+          <img src="{% static 'images/portfolio/work1.jpg' %}" alt="Работа 1" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="gallery-item">
+          <img src="{% static 'images/portfolio/work2.jpg' %}" alt="Работа 2" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="gallery-item">
+          <img src="{% static 'images/portfolio/work3.jpg' %}" alt="Работа 3" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Форма записи -->
+<section id="orderForm" class="py-5 section-light">
+  <div class="container">
+    <h2 class="section-title text-center">Запись на прием</h2>
+    <p class="section-subtitle text-center mb-5">Выберите удобное время и мастера</p>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <form method="post" action="{% url 'thanks' %}">
+            {% csrf_token %}
+            
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя" required>
+                  <label for="name">Ваше имя</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Телефон" required>
+                  <label for="phone">Телефон</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <select class="form-select" id="master" name="master" required>
+                <option value="" selected disabled>Выберите мастера</option>
+                {% for master in masters %}
+                <option value="{{ master.id }}">{{ master.first_name }} {{ master.last_name }}</option>
+                {% endfor %}
+              </select>
+              <label for="master">Мастер</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <select class="form-select" id="service" name="service" required>
+                <option value="" selected disabled>Выберите услугу</option>
+                {% for service in services %}
+                <option value="{{ service.id }}">{{ service.name }} ({{ service.price }} ₽)</option>
+                {% endfor %}
+              </select>
+              <label for="service">Услуга</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <input type="datetime-local" class="form-control" id="appointment_datetime" name="appointment_datetime" required>
+              <label for="appointment_datetime">Дата и время</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="comment" name="comment" placeholder="Комментарий" style="height: 100px"></textarea>
+              <label for="comment">Комментарий (необязательно)</label>
+            </div>
+            
+            <button type="submit" class="btn btn-pink w-100">
+              <i class="bi bi-calendar-check me-2"></i>Записаться
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Контакты -->
+<section id="contacts" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="bi bi-geo-alt contact-icon"></i>
+            <div>
+              <h4>Адрес</h4>
+              <p>г. Москва, ул. Примерная, д. 123</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-telephone contact-icon"></i>
+            <div>
+              <h4>Телефон</h4>
+              <p>+7 (XXX) XXX-XX-XX</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-clock contact-icon"></i>
+            <div>
+              <h4>Часы работы</h4>
+              <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="bi bi-instagram contact-icon"></i>
+            <div>
+              <h4>Instagram</h4>
+              <p>@karisha_pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3075482970897!2d37.618675!3d55.755826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0JrRgNC10LzQu9GM!5e0!3m2!1sru!2sru!4v1616683154092!5m2!1sru!2sru" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Скрипт для динамической загрузки услуг в зависимости от выбранного мастера
+  document.addEventListener('DOMContentLoaded', function() {
+    const masterSelect = document.getElementById('master');
+    const serviceSelect = document.getElementById('service');
+    
+    masterSelect.addEventListener('change', function() {
+      // Здесь можно добавить AJAX-запрос для получения услуг выбранного мастера
+      // Для демонстрации просто показываем все услуги
+    });
+  });
+</script>
+{% endblock %}
