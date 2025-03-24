@@ -1,0 +1,85 @@
+/* Стили для страницы благодарности */
+.thanks-wrapper {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .thanks-container {
+    background-color: #fff5f7;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(252, 189, 210, 0.3);
+    padding: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 700px;
+  }
+  
+  .thanks-title {
+    color: #d6336c;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .thanks-message {
+    color: #495057;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  
+  .thanks-icon {
+    color: #f06595;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .thanks-phone {
+    color: #d6336c;
+  }
+  
+  .btn-pink {
+    background-color: #f06595;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(240, 101, 149, 0.4);
+  }
+  
+  .btn-pink:hover {
+    background-color: #d6336c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(240, 101, 149, 0.6);
+    color: white;
+  }
+  
+  .flower-decoration {
+    position: absolute;
+    opacity: 0.1;
+    z-index: -1;
+  }
+  
+  .flower-decoration i {
+    font-size: 15rem;
+  }
+  
+  .flower-top-right {
+    top: 10%;
+    right: 5%;
+    transform: rotate(45deg);
+  }
+  
+  .flower-bottom-left {
+    bottom: 10%;
+    left: 5%;
+    transform: rotate(-45deg);
+  }
+  
