@@ -420,3 +420,32 @@ footer {
 .footer .contact-item p {
   margin-bottom: 0;
 }
+
+/* Стили для страницы списка записей */
+.bg-pink {
+  background-color: #f06595 !important;
+}
+
+.text-pink {
+  color: #f06595 !important;
+}
+
+.active-filter {
+  color: #d6336c;
+  font-weight: bold;
+}
+
+.filter-link {
+  color: #495057;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.filter-link:hover {
+  color: #d6336c;
+}
+
+.badge.bg-pink {
+  background-color: #f06595 !important;
+}

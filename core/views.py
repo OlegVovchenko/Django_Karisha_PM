@@ -1,8 +1,10 @@
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Master, Service, Visit
-from .form import VisitForm
+from .forms import VisitForm
+from django.shortcuts import redirect
+from django.db.models import Q
 
 MENU = [
     {'title': 'Главная', 'url': '/', 'active': True},
@@ -41,3 +43,41 @@ class ThanksView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['menu'] = MENU
         return context
+
+class VisitListView(ListView):
+    model = Visit
+    template_name = 'visit_list.html'
+    context_object_name = 'visits'
+    paginate_by = 1
+
+    def get_queryset(self):
+        """Формируем QuerySet с учетом поиска и фильтрации по мастеру"""
+        queryset = Visit.objects.all().order_by('-created_at')
+
+        # Получаем параметры из GET-запроса
+        search_query = self.request.GET.get('q', '')
+        master_id = self.request.GET.get('master', '')
+
+        # Фильтрация по поисковому запросу (имя или телефон)
+        if search_query:
+            queryset = queryset.filter(Q(name__icontains=search_query) | Q(phone__icontains=search_query))
+
+        # Фильтрация по мастеру
+        if master_id:
+            queryset = queryset.filter(master_id=master_id)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        """Добавляем в контекст список мастеров и текущие фильтры"""
+        context = super().get_context_data(**kwargs)
+        context['masters'] = Master.objects.all()
+        context['search_query'] = self.request.GET.get('q', '')
+        context['selected_master'] = self.request.GET.get('master', '')
+        return context
+
+    def dispatch(self, request, *args, **kwargs):
+        """Запрещаем доступ не-администраторам"""
+        if not request.user.is_staff:
+            return redirect('main')  # Перенаправляем на главную
+        return super().dispatch(request, *args, **kwargs)
