@@ -136,7 +136,7 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-          // Оставляем только необходимый код для прелоадера
+          // 1. Код для прелоадера
           const preloader = document.getElementById('preloader');
           if (preloader) {
             setTimeout(function() {
@@ -149,6 +149,26 @@
             }, 500);
           }
           
+          // 2. Код для автоматического закрытия меню при клике вне его области
+          document.addEventListener('click', function(event) {
+            // Проверяем, открыто ли меню
+            const navbarCollapse = document.querySelector('.navbar-collapse.show');
+            
+            // Если меню открыто и клик был не по меню и не по кнопке переключения
+            if (navbarCollapse && 
+                !navbarCollapse.contains(event.target) && 
+                !event.target.classList.contains('navbar-toggler') &&
+                !event.target.closest('.navbar-toggler')) {
+              
+              // Находим кнопку переключения и программно кликаем по ней
+              const navbarToggler = document.querySelector('.navbar-toggler');
+              if (navbarToggler) {
+                navbarToggler.click();
+              }
+            }
+          });
+          
+          // 3. Код для плавной прокрутки с учетом фиксированного меню
           document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
               e.preventDefault();
@@ -158,9 +178,13 @@
               
               const targetElement = document.querySelector(targetId);
               if (targetElement) {
+                // Получаем высоту навигационного меню
                 const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                
+                // Вычисляем позицию элемента с учетом прокрутки страницы
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                 
+                // Прокручиваем к элементу с учетом высоты меню
                 window.scrollTo({
                   top: targetPosition - navbarHeight,
                   behavior: 'smooth'
