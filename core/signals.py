@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from core.utlils import check_review
+from core.utils import check_review
 from .models import Review
 
 @receiver(post_save, sender=Review)
