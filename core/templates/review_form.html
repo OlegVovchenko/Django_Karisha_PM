@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Оставить отзыв{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-container">
+        <h2 class="section-title text-center mb-4">Оставить отзыв</h2>
+        <p class="text-center mb-4">Мы ценим ваше мнение! Расскажите о своем опыте посещения нашего салона.</p>
+
+        <!-- Добавляем кнопку возврата на главную -->
+        <div class="text-center mb-4">
+            <a href="/" class="btn btn-pink btn-sm btn-return-small">
+                <i class="bi bi-house-heart me-2"></i>Вернуться на главную
+            </a>
+        </div>
+        
+        <form method="post">
+          {% csrf_token %}
+          
+          <div class="form-floating mb-3">
+            {{ form.name }}
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            {% if form.name.errors %}
+            <div class="invalid-feedback d-block">
+              {{ form.name.errors }}
+            </div>
+            {% endif %}
+          </div>
+          
+          <div class="form-floating mb-3">
+            {{ form.master }}
+            <label for="{{ form.master.id_for_label }}">{{ form.master.label }}</label>
+            {% if form.master.errors %}
+            <div class="invalid-feedback d-block">
+              {{ form.master.errors }}
+            </div>
+            {% endif %}
+          </div>
+          
+          <div class="form-floating mb-3">
+            {{ form.rating }}
+            <label for="{{ form.rating.id_for_label }}">{{ form.rating.label }}</label>
+            {% if form.rating.errors %}
+            <div class="invalid-feedback d-block">
+              {{ form.rating.errors }}
+            </div>
+            {% endif %}
+          </div>
+          
+          <div class="form-floating mb-3">
+            {{ form.text }}
+            <label for="{{ form.text.id_for_label }}">{{ form.text.label }}</label>
+            {% if form.text.errors %}
+            <div class="invalid-feedback d-block">
+              {{ form.text.errors }}
+            </div>
+            {% endif %}
+          </div>
+          
+          {% if form.non_field_errors %}
+          <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+          </div>
+          {% endif %}
+          
+          <div class="text-center">
+            <button type="submit" class="btn btn-pink">
+              <i class="bi bi-star me-2"></i>Отправить отзыв
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

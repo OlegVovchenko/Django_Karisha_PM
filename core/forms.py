@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import RegexValidator
-from .models import Master, Service, Visit
+from .models import Master, Service, Visit, Review
 import datetime
 
 class VisitForm(forms.ModelForm):
@@ -133,3 +133,25 @@ class VisitForm(forms.ModelForm):
                 )
         
         return cleaned_data
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['name', 'text', 'master', 'rating']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ваше имя'
+            }),
+            'text': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ваш отзыв (минимум 30 символов)',
+                'rows': 4
+            }),
+            'master': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'rating': forms.Select(attrs={
+                'class': 'form-control'
+            })
+        }

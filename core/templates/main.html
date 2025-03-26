@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Салон красоты Karisha_PM{% endblock %}
+{% block title %}Салон красоты "Karisha_PM"{% endblock %}
 
 {% block content %}
 <!-- Главный баннер -->
@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <h1 class="hero-title">Добро пожаловать в салон красоты Karisha_PM</h1>
+        <h1 class="hero-title">Добро пожаловать в салон красоты "Karisha_PM"</h1>
         <p class="hero-subtitle">Мы создаем красоту и уверенность</p>
         <a href="#orderForm" class="btn btn-pink mt-3">
           <i class="bi bi-calendar-check me-2"></i>Записаться онлайн
@@ -152,6 +152,52 @@
   </div>
 </section>
 
+<!-- Отзывы -->
+<section id="reviews" class="py-5 section-light">
+    <div class="container">
+      <h2 class="section-title text-center">Отзывы наших клиентов</h2>
+      <p class="section-subtitle text-center mb-5">Что говорят о нас те, кто уже воспользовался нашими услугами</p>
+      
+      <div class="row">
+        {% for review in reviews %}
+        <div class="col-md-4 mb-4">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-rating">
+                {% for i in "12345" %}
+                  {% if forloop.counter <= review.rating %}
+                  <i class="bi bi-star-fill"></i>
+                  {% else %}
+                  <i class="bi bi-star"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="review-date">{{ review.created_at|date:"d.m.Y" }}</div>
+            </div>
+            <div class="review-body">
+              <p class="review-text">{{ review.text|truncatechars:150 }}</p>
+            </div>
+            <div class="review-footer">
+              <div class="review-author">{{ review.name }}</div>
+              <div class="review-master">Мастер: {{ review.master.first_name }}</div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+          <p>Пока нет отзывов. Будьте первым, кто оставит отзыв о нашем салоне!</p>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="{% url 'review_create' %}" class="btn btn-pink">
+          <i class="bi bi-pencil-square me-2"></i>Оставить отзыв
+        </a>
+      </div>
+    </div>
+</section>
+  
 <!-- Форма записи -->
 <section id="orderForm" class="py-5 section-light">
   <div class="container">
@@ -235,9 +281,11 @@
             </div>
             {% endif %}
             
-            <button type="submit" class="btn btn-pink w-100">
-              <i class="bi bi-calendar-check me-2"></i>Записаться
-            </button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-pink">
+                  <i class="bi bi-calendar-check me-2"></i>Записаться
+                </button>
+            </div>
           </form>
         </div>
       </div>

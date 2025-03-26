@@ -1,8 +1,8 @@
 from django.views.generic import TemplateView, CreateView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .models import Master, Service, Visit
-from .forms import VisitForm
+from .models import Master, Service, Visit, Review
+from .forms import VisitForm, ReviewForm
 from django.shortcuts import redirect
 from django.db.models import Q
 
@@ -11,8 +11,8 @@ MENU = [
     {'title': 'Мастера', 'url': '#masters', 'active': True},
     {'title': 'Услуги', 'url': '#services', 'active': True},
     {'title': 'Портфолио', 'url': '#portfolio', 'active': True},
-    # {'title': 'Отзывы', 'url': '#reviews', 'active': True},
-    # {'title': 'Оставить отзыв', 'url': '/review/create/', 'active': True},
+    {'title': 'Отзывы', 'url': '#reviews', 'active': True},
+    {'title': 'Оставить отзыв', 'url': '/review/create/', 'active': True},
     {'title': 'Запись на прием', 'url': '#orderForm', 'active': True},
 ]
 
@@ -26,6 +26,7 @@ class MainView(CreateView):
         context['menu'] = MENU
         context['masters'] = Master.objects.filter(is_active=True)
         context['services'] = Service.objects.all()
+        context["reviews"] = Review.objects.filter(status=0).order_by('-created_at')[:6]
         return context
     
     def form_valid(self, form):
@@ -81,3 +82,13 @@ class VisitListView(ListView):
         if not request.user.is_staff:
             return redirect('main')  # Перенаправляем на главную
         return super().dispatch(request, *args, **kwargs)
+
+class ReviewCreateView(CreateView):
+    template_name = 'review_form.html'
+    form_class = ReviewForm
+    success_url = '/#reviews'  # Редирект на секцию с отзывами
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu'] = MENU
+        return context
