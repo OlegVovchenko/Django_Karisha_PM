@@ -5,6 +5,7 @@ from .models import Master, Service, Visit, Review
 from .forms import VisitForm, ReviewForm
 from django.shortcuts import redirect
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 MENU = [
     {'title': 'Главная', 'url': '/', 'active': True},
@@ -45,11 +46,15 @@ class ThanksView(TemplateView):
         context['menu'] = MENU
         return context
 
-class VisitListView(ListView):
+class VisitListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Visit
     template_name = 'visit_list.html'
     context_object_name = 'visits'
     paginate_by = 1
+
+    def test_func(self):
+        """Проверяет, имеет ли пользователь права администратора"""
+        return self.request.user.is_staff
 
     def get_queryset(self):
         """Формируем QuerySet с учетом поиска и фильтрации по мастеру"""

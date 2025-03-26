@@ -49,6 +49,12 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/#reviews">Отзывы</a>
                     </li>
+                    <!-- Добавляем кнопку для администраторов -->
+                    {% if user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'visit_list' %}">Управление записями</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                       <a class="nav-link special-nav-link" href="/#orderForm">Записаться на прием</a>
                     </li>
