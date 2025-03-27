@@ -6,6 +6,7 @@ from .forms import VisitForm, ReviewForm
 from django.shortcuts import redirect
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import JsonResponse
 
 MENU = [
     {'title': 'Главная', 'url': '/', 'active': True},
@@ -26,9 +27,22 @@ class MainView(CreateView):
         context = super().get_context_data(**kwargs)
         context['menu'] = MENU
         context['masters'] = Master.objects.filter(is_active=True)
+
+        # Группируем услуги по 3 для карусели
+        services = list(Service.objects.all())
+        service_groups = [services[i:i+3] for i in range(0, len(services), 3)]
+        context['service_groups'] = service_groups
+        
         context['services'] = Service.objects.all()
         context["reviews"] = Review.objects.filter(status=0).order_by('-created_at')[:6]
         return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        master_id = self.request.GET.get('master_id')
+        if master_id:
+            kwargs['master_id'] = master_id
+        return kwargs
     
     def form_valid(self, form):
         messages.success(self.request, 'Ваша заявка успешно отправлена!')
@@ -97,3 +111,15 @@ class ReviewCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['menu'] = MENU
         return context
+
+def get_master_services(request):
+    """Возвращает список услуг для выбранного мастера в формате JSON"""
+    master_id = request.GET.get('master_id')
+    if master_id:
+        try:
+            master = Master.objects.get(id=master_id)
+            services = list(master.services.values('id', 'name', 'price', 'duration'))
+            return JsonResponse({'services': services})
+        except Master.DoesNotExist:
+            return JsonResponse({'error': 'Мастер не найден'}, status=404)
+    return JsonResponse({'error': 'Не указан ID мастера'}, status=400)

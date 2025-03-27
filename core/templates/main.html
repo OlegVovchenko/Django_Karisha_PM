@@ -67,7 +67,7 @@
     
     <div class="row">
       {% for master in masters %}
-      <div class="col-md-4 mb-4">
+      <div class="col-md-4">
         <div class="master-card">
           {% if master.photo %}
           <img src="{{ master.photo.url }}" class="master-image" alt="{{ master.first_name }}">
@@ -102,29 +102,53 @@
     <h2 class="section-title text-center">Наши услуги</h2>
     <p class="section-subtitle text-center mb-5">Всё для вашей красоты и комфорта</p>
     
-    <div class="row">
-      {% for service in services %}
-      <div class="col-md-4 mb-4">
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="bi bi-scissors"></i>
-          </div>
-          <h3 class="service-title">{{ service.name }}</h3>
-          <p class="service-description">{{ service.description|truncatechars:100 }}</p>
-          <div class="service-details">
-            <div class="service-price">{{ service.price }} ₽</div>
-            <div class="service-duration"><i class="bi bi-clock"></i> {{ service.duration }} мин</div>
+    <!-- Услуги в карусели -->
+    <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% for service_group in service_groups %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row">
+            {% for service in service_group %}
+            <div class="col-md-4 mb-4">
+              <div class="service-card">
+                <h3 class="service-title">{{ service.name }}</h3>
+                <p class="service-description">{{ service.description|truncatechars:200 }}</p>
+                <div class="service-details">
+                  <div class="service-price">{{ service.price }} ₽</div>
+                  <div class="service-duration"><i class="bi bi-clock"></i> {{ service.duration }} мин</div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
           </div>
         </div>
+        {% empty %}
+        <div class="carousel-item active">
+          <div class="text-center">
+            <p>Скоро здесь появится информация о наших услугах</p>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      {% empty %}
-      <div class="col-12 text-center">
-        <p>Скоро здесь появится информация о наших услугах</p>
-      </div>
-      {% endfor %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    
+    <div class="text-center mt-4">
+      <a href="#orderForm" class="btn btn-pink">
+        <i class="bi bi-calendar-check me-2"></i>Записаться на услугу
+      </a>
     </div>
   </div>
 </section>
+
 
 <!-- Галерея работ -->
 <section id="portfolio" class="py-5">
@@ -296,15 +320,54 @@
 
 {% block scripts %}
 <script>
-  // Скрипт для динамической загрузки услуг в зависимости от выбранного мастера
   document.addEventListener('DOMContentLoaded', function() {
     const masterSelect = document.getElementById('master');
     const serviceSelect = document.getElementById('service');
     
+    // Функция для загрузки услуг выбранного мастера
+    function loadMasterServices(masterId) {
+      if (!masterId) {
+        // Если мастер не выбран, очищаем список услуг
+        serviceSelect.innerHTML = '';
+        return;
+      }
+      
+      // Отправляем AJAX-запрос для получения услуг мастера
+      fetch(`/api/master-services/?master_id=${masterId}`)
+        .then(response => response.json())
+        .then(data => {
+          // Очищаем текущий список услуг
+          serviceSelect.innerHTML = '';
+          
+          // Добавляем новые услуги
+          if (data.services && data.services.length > 0) {
+            data.services.forEach(service => {
+              const option = document.createElement('option');
+              option.value = service.id;
+              option.textContent = `${service.name} (${service.price} ₽, ${service.duration} мин)`;
+              serviceSelect.appendChild(option);
+            });
+          } else {
+            const option = document.createElement('option');
+            option.textContent = 'Нет доступных услуг';
+            option.disabled = true;
+            serviceSelect.appendChild(option);
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при загрузке услуг:', error);
+        });
+    }
+    
+    // Загружаем услуги при изменении выбранного мастера
     masterSelect.addEventListener('change', function() {
-      // Здесь можно добавить AJAX-запрос для получения услуг выбранного мастера
-      // Для демонстрации просто показываем все услуги
+      loadMasterServices(this.value);
     });
+    
+    // Загружаем услуги для изначально выбранного мастера (если есть)
+    if (masterSelect.value) {
+      loadMasterServices(masterSelect.value);
+    }
   });
 </script>
 {% endblock %}

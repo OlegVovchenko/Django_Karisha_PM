@@ -49,7 +49,8 @@ class VisitForm(forms.ModelForm):
         widget=forms.SelectMultiple(attrs={
             'class': 'form-select',
             'id': 'service',
-            'size': '3'  # Показывать 3 опции без прокрутки
+            'size': '3',  # Показывать 3 опции без прокрутки
+            'style': 'padding-left: 15px; text-indent: 40px;'  # Добавляем отступ слева
         }),
         label='Услуги'
     )
@@ -82,9 +83,16 @@ class VisitForm(forms.ModelForm):
         fields = ['name', 'phone', 'master', 'services', 'appointment_datetime', 'comment']
     
     def __init__(self, *args, **kwargs):
+        master_id = kwargs.pop('master_id', None)
         super(VisitForm, self).__init__(*args, **kwargs)
+        
         # Устанавливаем минимальную дату для выбора - сегодня
         self.fields['appointment_datetime'].widget.attrs['min'] = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M')
+        
+        # Если выбран мастер, фильтруем услуги
+        if master_id:
+            master = Master.objects.get(id=master_id)
+            self.fields['services'].queryset = master.services.all()
     
     def clean_appointment_datetime(self):
         """Проверка, что дата и время приема не в прошлом"""
