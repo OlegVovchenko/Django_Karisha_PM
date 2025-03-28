@@ -536,6 +536,14 @@ main {
     display: none;
   }
 
+  .gallery-item {
+    margin-bottom: 15px; /* Отступ снизу для каждого элемента галереи */
+  }
+  
+  #portfolioCarousel .carousel-item .col-md-4 {
+    padding-bottom: 15px; /* Дополнительный отступ для колонок */
+  }
+
   .footer {
     padding: 2rem 0 1rem;
   }

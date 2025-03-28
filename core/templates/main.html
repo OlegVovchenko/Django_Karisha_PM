@@ -150,31 +150,122 @@
 </section>
 
 
-<!-- Галерея работ -->
+<!-- Галерея работ с каруселью -->
 <section id="portfolio" class="py-5">
   <div class="container">
     <h2 class="section-title text-center">Наши работы</h2>
     <p class="section-subtitle text-center mb-5">Результаты, которыми мы гордимся</p>
     
-    <div class="row gallery">
-      <div class="col-md-4 mb-4">
-        <div class="gallery-item">
-          <img src="{% static 'images/portfolio/work1.jpg' %}" alt="Работа 1" class="img-fluid">
-        </div>
+    <!-- Карусель Bootstrap -->
+    <div id="portfolioCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Индикаторы -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#portfolioCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+        <button type="button" data-bs-target="#portfolioCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+        <button type="button" data-bs-target="#portfolioCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+        {% comment %} <button type="button" data-bs-target="#portfolioCarousel" data-bs-slide-to="3" aria-label="Слайд 4"></button> {% endcomment %}
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="gallery-item">
-          <img src="{% static 'images/portfolio/work2.jpg' %}" alt="Работа 2" class="img-fluid">
+      
+      <!-- Слайды -->
+      <div class="carousel-inner">
+        <!-- Слайд 1 -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work1.jpg' %}" alt="Работа 1" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work2.jpg' %}" alt="Работа 2" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work3.jpg' %}" alt="Работа 3" class="img-fluid">
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="gallery-item">
-          <img src="{% static 'images/portfolio/work3.jpg' %}" alt="Работа 3" class="img-fluid">
+        
+        <!-- Слайд 2 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work4.jpg' %}" alt="Работа 4" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work5.jpg' %}" alt="Работа 5" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work6.jpg' %}" alt="Работа 6" class="img-fluid">
+              </div>
+            </div>
+          </div>
         </div>
+        
+        <!-- Слайд 3 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work7.jpg' %}" alt="Работа 7" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work8.jpg' %}" alt="Работа 8" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work9.jpg' %}" alt="Работа 9" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {% comment %} <!-- Слайд 4 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work1.jpg' %}" alt="Работа 10" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work2.jpg' %}" alt="Работа 11" class="img-fluid">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="gallery-item">
+                <img src="{% static 'images/portfolio/work3.jpg' %}" alt="Работа 12" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
       </div>
+      
+      <!-- Кнопки управления -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
     </div>
   </div>
 </section>
+
 
 <!-- Отзывы -->
 <section id="reviews" class="py-5 section-light">
