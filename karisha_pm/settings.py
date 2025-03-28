@@ -135,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Для авто-модерации отзывов через AI
 MISTRAL_API_KEY = os.getenv('MISTRAL_API_KEY')
 MISTRAL_MODEL = os.getenv('MISTRAL_MODEL')
+
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+YOUR_PERSONAL_CHAT_ID = os.getenv('YOUR_PERSONAL_CHAT_ID')
