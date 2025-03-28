@@ -2,3 +2,4 @@ django
 python-dotenv
 pillow
 mistalai
+python-telegram-bot
