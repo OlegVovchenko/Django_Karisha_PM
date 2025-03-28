@@ -104,14 +104,29 @@ class Visit(models.Model):
         return self.appointment_datetime.strftime('%d.%m.%Y %H:%M')
 
     def check_availability(self):
-    # Проверка, что мастер свободен в указанное время
+        """Проверка, что мастер свободен в указанное время"""
+        # Получаем время окончания текущей записи
+        end_time = self.appointment_datetime + timedelta(minutes=self.total_duration())
+        
+        # Ищем пересекающиеся записи
         overlapping_visits = Visit.objects.filter(
             master=self.master,
             status__in=[0, 1],  # Не подтверждена или подтверждена
-            appointment_datetime__lt=self.appointment_datetime + timedelta(minutes=self.total_duration()),
-            appointment_datetime__gt=self.appointment_datetime - timedelta(minutes=30)  # Буфер между визитами
         ).exclude(pk=self.pk)
-        return not overlapping_visits.exists()
+        
+        for visit in overlapping_visits:
+            # Вычисляем время окончания существующей записи
+            visit_end_time = visit.appointment_datetime + timedelta(minutes=visit.total_duration())
+            
+            # Проверяем пересечение интервалов
+            # Новая запись начинается до окончания существующей
+            # И новая запись заканчивается после начала существующей
+            if (self.appointment_datetime < visit_end_time and 
+                end_time > visit.appointment_datetime):
+                return False
+        
+        return True
+
     
     class Meta:
         verbose_name = "Запись"
@@ -135,7 +150,7 @@ class Review(models.Model):
 
     name = models.CharField(max_length=50, verbose_name='Имя')
     text = models.TextField(max_length=400, verbose_name='Текст', validators=[MinLengthValidator(30)])
-    master = models.ForeignKey('Master', on_delete=models.CASCADE, verbose_name='Мастер')
+    master = models.ForeignKey('Master', on_delete=models.CASCADE, verbose_name='Мастер', null=True, blank=True)
     rating = models.IntegerField(choices=RAITING_CHOICES, verbose_name='Рейтинг')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     status = models.IntegerField(choices=STATUS_CHOICES, default=1, verbose_name='Статус')

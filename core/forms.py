@@ -2,6 +2,7 @@ from django import forms
 from django.core.validators import RegexValidator
 from .models import Master, Service, Visit, Review
 import datetime
+from datetime import timedelta
 
 class VisitForm(forms.ModelForm):
     """Форма для записи на прием в салон красоты"""
@@ -97,9 +98,25 @@ class VisitForm(forms.ModelForm):
     def clean_appointment_datetime(self):
         """Проверка, что дата и время приема не в прошлом"""
         appointment_datetime = self.cleaned_data.get('appointment_datetime')
-        if appointment_datetime < datetime.datetime.now():
+        
+        # Получаем текущее время в том же формате (naive или aware)
+        from django.utils import timezone
+        now = timezone.now()
+        
+        # Если appointment_datetime наивное (без часового пояса)
+        if timezone.is_naive(appointment_datetime) and not timezone.is_naive(now):
+            # Делаем now наивным
+            now = timezone.make_naive(now)
+        # Если appointment_datetime осведомленное (с часовым поясом)
+        elif not timezone.is_naive(appointment_datetime) and timezone.is_naive(now):
+            # Делаем now осведомленным
+            now = timezone.make_aware(now)
+        
+        if appointment_datetime < now:
             raise forms.ValidationError("Нельзя выбрать дату и время в прошлом")
+        
         return appointment_datetime
+
     
     def clean(self):
         """Проверка доступности мастера в выбранное время"""
@@ -109,38 +126,59 @@ class VisitForm(forms.ModelForm):
         services = cleaned_data.get('services')
         
         if master and appointment_datetime and services:
-            # Создаем временный объект Visit для проверки доступности
-            temp_visit = Visit(
-                master=master,
-                appointment_datetime=appointment_datetime
-            )
-            
-            # Сохраняем временно, чтобы можно было использовать M2M поле services
-            if self.instance.pk:
-                temp_visit.pk = self.instance.pk
-            
-            # Проверяем доступность мастера
-            # Примечание: для корректной работы этого метода нужно временно добавить услуги
-            # Это упрощенная версия, в реальном проекте может потребоваться более сложная логика
+            # Рассчитываем продолжительность выбранных услуг
             total_duration = sum(service.duration for service in services)
             
-            # Проверяем, нет ли пересечений с другими записями
+            # Получаем время окончания новой записи
+            end_time = appointment_datetime + timedelta(minutes=total_duration)
+            
+            # Ищем пересекающиеся записи
             overlapping_visits = Visit.objects.filter(
                 master=master,
                 status__in=[0, 1],  # Не подтверждена или подтверждена
-                appointment_datetime__lt=appointment_datetime + datetime.timedelta(minutes=total_duration),
-                appointment_datetime__gt=appointment_datetime - datetime.timedelta(minutes=30)  # Буфер между визитами
             )
             
             if self.instance.pk:
                 overlapping_visits = overlapping_visits.exclude(pk=self.instance.pk)
             
-            if overlapping_visits.exists():
-                raise forms.ValidationError(
-                    "Выбранный мастер занят в указанное время. Пожалуйста, выберите другое время или мастера."
-                )
-        
+            # Проверяем каждую существующую запись на пересечение
+            for visit in overlapping_visits:
+                # Получаем услуги для этой записи
+                visit_services = visit.services.all()
+                
+                # Рассчитываем продолжительность
+                visit_duration = sum(service.duration for service in visit_services)
+                
+                # Вычисляем время окончания существующей записи
+                visit_end_time = visit.appointment_datetime + timedelta(minutes=visit_duration)
+                
+                # Проверяем пересечение интервалов
+                if (appointment_datetime < visit_end_time and 
+                    end_time > visit.appointment_datetime):
+                    
+                    # Форматируем время для сообщения
+                    visit_start_time = visit.appointment_datetime.strftime('%H:%M')
+                    visit_end_time_str = visit_end_time.strftime('%H:%M')
+                    
+                    # Находим ближайшее свободное время после текущей записи
+                    next_available_time = visit_end_time + timedelta(minutes=15)  # Добавляем 15 минут буфера
+                    next_available_time_str = next_available_time.strftime('%H:%M')
+                    next_available_date_str = next_available_time.strftime('%d.%m.%Y')
+                    
+                    # Формируем информативное сообщение об ошибке
+                    error_message = (
+                        f"Мастер {master.first_name} {master.last_name} занят в указанное время "
+                        f"(с {visit_start_time} до {visit_end_time_str}). "
+                        f"Ближайшее доступное время для записи к этому мастеру: "
+                        f"{next_available_date_str} в {next_available_time_str}. "
+                        f"Пожалуйста, выберите другое время или другого мастера."
+                    )
+                    
+                    raise forms.ValidationError(error_message)
+            
         return cleaned_data
+
+
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -163,3 +201,9 @@ class ReviewForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ReviewForm, self).__init__(*args, **kwargs)
+        # Делаем поле master необязательным
+        self.fields['master'].required = False
+        self.fields['master'].empty_label = "Общий отзыв о салоне"

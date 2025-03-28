@@ -24,7 +24,7 @@ def review_post_save(sender, instance, created, **kwargs):
 ⭐ *НОВЫЙ ОТЗЫВ В САЛОНЕ КРАСОТЫ "KARISHA_PM"* ⭐
 
 👤 *Клиент:* {review.name}
-{f"👩‍💼 *Мастер:* {review.master.first_name} {review.master.last_name}" if review.master else ""}
+{f"👩‍💼 *Мастер:* {review.master.first_name} {review.master.last_name}" if review.master else "💼 *Тип отзыва:* Общий отзыв о салоне"}
 ⭐ *Оценка:* {review.get_rating_display()} ({review.rating}/5)
 
 📝 *Отзыв:* 
