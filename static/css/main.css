@@ -12,7 +12,12 @@
   --transition-default: all 0.3s ease;
 }
 
-/* Общие базовые классы */
+/* Корректировка позиционирования якорей для фиксированного меню */
+:target {
+  scroll-margin-top: 80px; /* Высота вашего меню + дополнительный отступ */
+}
+
+/* Общие базовые классы - дополняют Bootstrap */
 .pattern-bg {
   background-color: var(--color-bg-light);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23f8a5c2' fill-opacity='0.1' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
@@ -22,8 +27,8 @@
   background-color: var(--color-bg-light);
 }
 
+/* Кастомные карточки - расширяют Bootstrap .card */
 .card-base {
-  background-color: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-default);
   transition: var(--transition-default);
@@ -35,23 +40,20 @@
   box-shadow: var(--shadow-hover);
 }
 
+/* Кастомные заголовки - расширяют Bootstrap .h1-h6 */
 .title-base {
   color: var(--color-primary-dark);
   font-family: 'Playfair Display', serif;
-  margin-bottom: 1rem;
 }
 
+/* Многострочный текст с эллипсисом */
 .text-ellipsis {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Кастомная кнопка - расширяет Bootstrap .btn */
 .btn-pink {
   background-color: var(--color-primary);
   border: none;
@@ -72,13 +74,10 @@
 
 /* Стили для страницы благодарности */
 .thanks-wrapper {
-  position: relative;
-  overflow: hidden;
   min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-bg-light);
 }
 
 .thanks-container {
@@ -86,8 +85,6 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-pink);
   padding: 3rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
   text-align: center;
   max-width: 700px;
 }
@@ -138,25 +135,85 @@
   transform: rotate(-45deg);
 }
 
-/* Стили для футера */
-footer {
+/* Стили для футера - дополняют Bootstrap */
+.footer .col-md-4 {
   text-align: center;
-  padding: 1.5rem 0;
+}
+
+.footer {
   background-color: var(--color-bg-light);
-  color: var(--color-primary-dark);
-  font-size: 0.9rem;
-  margin-top: 2rem;
+  color: var(--color-text);
+  padding: 3rem 0 1.5rem;
   border-top: 1px solid rgba(240, 101, 149, 0.2);
 }
 
-footer p {
-  margin-bottom: 0;
+.footer-title {
+  color: var(--color-primary-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center; /* Центрируем элементы по горизонтали */
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact-icon {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-item p {
+  margin-bottom: 0.3rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  transition: var(--transition-default);
+}
+
+.social-link:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(240, 101, 149, 0.4);
+  color: white;
+}
+
+.copyright {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240, 101, 149, 0.2);
+  color: var(--color-text-light);
+  font-size: 0.9rem;
 }
 
 /* Стили для главной страницы */
 .hero-section {
   padding: 5rem 0;
-  background-color: var(--color-bg-light);
 }
 
 .hero-title {
@@ -169,7 +226,6 @@ footer p {
 .hero-subtitle {
   color: var(--color-text);
   font-size: 1.3rem;
-  margin-bottom: 2rem;
 }
 
 .hero-image {
@@ -196,7 +252,6 @@ footer p {
   color: var(--color-text);
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 1.5rem;
 }
 
 /* О нас */
@@ -205,39 +260,29 @@ footer p {
   box-shadow: var(--shadow-pink);
 }
 
-.features {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .feature-icon {
   color: var(--color-primary);
   font-size: 1.5rem;
 }
 
 /* Мастера */
-#masters .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#masters .col-md-4 {
-  display: flex;
-  margin-bottom: 30px;
-}
-
 .master-card {
+  height: 100%;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+  transition: var(--transition-default);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+}
+
+.master-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .master-image-container {
@@ -251,18 +296,18 @@ footer p {
   object-fit: cover;
 }
 
-.master-info {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .master-name {
   color: var(--color-primary-dark);
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.master-services {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .master-description {
@@ -271,13 +316,6 @@ footer p {
   margin-bottom: 1rem;
   flex-grow: 1;
   -webkit-line-clamp: 3;
-}
-
-.master-services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: auto;
 }
 
 .service-tag {
@@ -289,19 +327,13 @@ footer p {
 }
 
 /* Услуги */
-#servicesCarousel .carousel-item .row {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-#servicesCarousel .carousel-item .col-md-4 {
-  display: flex;
-  flex-direction: column;
+/* Добавляем отступ между секциями */
+#services {
+  margin-top: 50px;
 }
 
 .service-card {
-  display: flex;
-  flex-direction: column;
   height: 280px;
   padding: 2rem;
 }
@@ -311,7 +343,7 @@ footer p {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
-  height: 40px;
+  height: 30px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -327,14 +359,6 @@ footer p {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   max-height: 130px;
-}
-
-.service-details {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0.5rem;
 }
 
 .service-price {
@@ -405,44 +429,16 @@ footer p {
   box-shadow: var(--shadow-pink);
 }
 
-.form-control, .form-select {
-  border-color: #ffd8e2;
-}
-
 .form-control:focus, .form-select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 0.25rem rgba(240, 101, 149, 0.25);
 }
 
 /* Контакты */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
 .contact-icon {
   color: var(--color-primary);
   font-size: 1.8rem;
   margin-top: 0.3rem;
-}
-
-.contact-item h4 {
-  color: var(--color-primary-dark);
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 0.5rem;
-}
-
-.map-container {
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-pink);
 }
 
 /* Отзывы */
@@ -451,33 +447,8 @@ footer p {
   margin-bottom: 1.5rem;
 }
 
-.review-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.review-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  object-fit: cover;
-}
-
-.review-author {
-  font-weight: bold;
-  margin-bottom: 0.2rem;
-}
-
-.review-date {
-  color: var(--color-text-light);
-  font-size: 0.8rem;
-}
-
 .review-rating {
-  margin-left: auto;
-  color: #ffc107;
+  color: #ffc107; /* Bootstrap warning color */
 }
 
 .review-text {
@@ -486,22 +457,38 @@ footer p {
 }
 
 .review-master {
-  margin-top: 1rem;
   font-style: italic;
   color: var(--color-text-light);
 }
 
 /* Страница со списком заявок */
+/* Отступ для основного контента под фиксированным меню */
+main {
+  padding-top: 80px; /* Высота фиксированного меню + небольшой отступ */
+}
+
 .list-group-item.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: #f06595;
+  border-color: #f06595;
+}
+
+.list-group-item a {
+  color: #495057;
+  text-decoration: none;
 }
 
 .list-group-item.active a {
-  color: white !important;
+  color: white;
 }
 
-/* Адаптивные стили */
+/* Стили для заголовков на странице списка визитов */
+.visit-list-heading {
+  color: #d6336c; /* Розовый цвет, соответствующий дизайну */
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+/* Адаптивные стили - дополняют Bootstrap */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.2rem;
@@ -509,10 +496,6 @@ footer p {
   
   .section-title {
     font-size: 2rem;
-  }
-  
-  .master-card {
-    height: auto;
   }
   
   .master-image-container {
@@ -526,6 +509,18 @@ footer p {
   .service-description {
     max-height: 150px;
   }
+
+  .container {
+    padding-top: 10px;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+  
+  .badge {
+    font-size: 0.7rem;
+  }
   
   .form-container {
     padding: 1.5rem;
@@ -536,13 +531,33 @@ footer p {
     margin: 1rem;
   }
   
-  .contact-info {
-    margin-bottom: 2rem;
-  }
-  
   #servicesCarousel .carousel-control-prev,
   #servicesCarousel .carousel-control-next {
     display: none;
+  }
+
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+  
+  .footer-title {
+    color: var(--color-primary-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center; /* Добавляем центрирование */
+  }
+  
+  /* Для контактной информации и социальных сетей нужно центрировать элементы */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center; /* Центрируем элементы по горизонтали */
+}
+  
+  .social-links {
+    margin-bottom: 1rem;
   }
 }
 
@@ -570,19 +585,151 @@ footer p {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Применение базовых классов к элементам */
-.master-card, .service-card, .review-card, .gallery-item {
-  composes: card-base;
+/* Утилиты для работы с текстом */
+.text-ellipsis-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.master-name, .service-title, .section-title, .thanks-title {
-  composes: title-base;
+.text-ellipsis-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.service-description, .master-description, .review-text {
-  composes: text-ellipsis;
+.text-ellipsis-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
-.hero-section, .thanks-wrapper {
-  composes: pattern-bg;
+/* Применение темы к элементам Bootstrap */
+.navbar {
+  background-color: white !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  color: var(--color-primary-dark) !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: var(--color-text) !important;
+  transition: var(--transition-default);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--color-primary) !important;
+}
+
+/* Специальная кнопка для записи в навигационном меню */
+.navbar .btn-nav-appointment {
+  background-color: var(--color-primary);
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(240, 101, 149, 0.3);
+  margin-left: 10px;
+}
+
+.navbar .btn-nav-appointment:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(240, 101, 149, 0.5);
+}
+
+.navbar .btn-nav-appointment i {
+  margin-right: 5px;
+}
+
+/* Для мобильного меню */
+@media (max-width: 992px) {
+  .navbar .btn-nav-appointment {
+    margin: 10px 0;
+    display: inline-block;
+  }
+}
+
+.pagination .page-link {
+  color: var(--color-primary);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.badge.bg-primary {
+  background-color: #0d6efd !important;
+}
+
+/* Кастомные стили для форм Bootstrap */
+.form-floating label {
+  color: var(--color-text-light);
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  color: var(--color-primary);
+}
+
+.form-select option:checked {
+  background-color: var(--color-primary);
+}
+
+/* Стили для модальных окон */
+.modal-content {
+  border-radius: var(--border-radius);
+  border: none;
+  box-shadow: var(--shadow-pink);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(240, 101, 149, 0.2);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(240, 101, 149, 0.2);
+}
+
+.modal-title {
+  color: var(--color-primary-dark);
+  font-family: 'Playfair Display', serif;
+}
+
+/* Стили для таблицы */
+.table {
+  color: #495057;
+}
+
+.table thead {
+  background-color: var(--color-bg-light);
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(240, 101, 149, 0.05);
 }
