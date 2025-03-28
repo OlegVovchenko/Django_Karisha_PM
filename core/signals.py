@@ -18,6 +18,27 @@ def review_post_save(sender, instance, created, **kwargs):
         if check_review(review_text):
             # Если прошли проверку, меняем status на  2
             review.status = 2
+            
+            # Формируем ТГ сообщение
+            message = f"""
+⭐ *НОВЫЙ ОТЗЫВ В САЛОНЕ КРАСОТЫ "KARISHA_PM"* ⭐
+
+👤 *Клиент:* {review.name}
+{f"👩‍💼 *Мастер:* {review.master.first_name} {review.master.last_name}" if review.master else ""}
+⭐ *Оценка:* {review.get_rating_display()} ({review.rating}/5)
+
+📝 *Отзыв:* 
+"{review.text}"
+
+📅 *Дата создания:* {review.created_at.strftime('%d.%m.%Y %H:%M')}
+
+🔗 [Открыть в админ-панели](http://127.0.0.1:8000/admin/core/review/{review.id}/change/)
+---------------------------------------------------------------
+"""
+
+            # Отправляем ТГ сообщение
+            asyncio.run(send_telegram_message(TELEGRAM_BOT_TOKEN, YOUR_PERSONAL_CHAT_ID, message))
+
         else:
             # Если не прошли проверку, меняем status на  3
             review.status = 3
@@ -66,6 +87,7 @@ def send_telegram_notification(sender, instance, action, **kwargs):
 ⏱️ *Общая продолжительность:* {total_duration} мин
 
 🔗 [Открыть в админ-панели](http://127.0.0.1:8000/admin/core/visit/{instance.id}/change/)
+---------------------------------------------------------------
 """
         
         # Отправляем сообщение
