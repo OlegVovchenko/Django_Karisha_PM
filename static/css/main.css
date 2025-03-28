@@ -334,31 +334,39 @@
 }
 
 .service-card {
-  height: 280px;
+  background-color: white;
+  border-radius: 15px;
   padding: 2rem;
+  height: 100%; /* Сохраняем это свойство */
+  min-height: 350px; /* Добавляем минимальную высоту */
+  display: flex; /* Добавляем flex-контейнер */
+  flex-direction: column; /* Элементы располагаются вертикально */
+  justify-content: space-between; /* Распределяем содержимое */
+  border: 1px solid rgba(240, 101, 149, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(240, 101, 149, 0.25); /* Более заметная тень при наведении */
+  border-color: rgba(240, 101, 149, 0.4); /* Более заметный контур при наведении */
 }
 
 .service-title {
-  color: var(--color-primary-dark);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  margin-bottom: 0.8rem;
-  height: 30px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  height: 60px; /* Фиксированная высота для заголовка */
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .service-description {
-  color: var(--color-text);
-  margin-bottom: 0.8rem;
-  flex-grow: 1;
-  overflow: hidden;
+  flex-grow: 1; /* Позволяет описанию растягиваться */
+  overflow: hidden; /* Скрываем переполнение */
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3; /* Ограничиваем количество строк */
   -webkit-box-orient: vertical;
-  max-height: 130px;
+  margin-bottom: 1rem;
 }
 
 .service-price {
