@@ -90,12 +90,18 @@
                                                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#visitDetails{{ visit.id }}">
                                                     <i class="bi bi-eye"></i>
                                                 </button>
-                                                <a href="#" class="btn btn-outline-success">
-                                                    <i class="bi bi-check-lg"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-outline-danger">
-                                                    <i class="bi bi-x-lg"></i>
-                                                </a>
+                                                <form method="POST" action="{% url 'update_visit_status' visit.id 1 %}" class="d-inline">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-outline-success">
+                                                        <i class="bi bi-check-lg"></i>
+                                                    </button>
+                                                </form>
+                                                <form method="POST" action="{% url 'update_visit_status' visit.id 2 %}" class="d-inline">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-outline-danger">
+                                                        <i class="bi bi-x-lg"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                             
                                             <!-- Модальное окно с деталями записи -->
@@ -138,6 +144,10 @@
                                                                 <h6>Общая стоимость:</h6>
                                                                 <p class="fw-bold text-pink">{{ visit.total_price }} ₽</p>
                                                             </div>
+                                                            <div class="mb-3">
+                                                                <h6>Общая продолжительность:</h6>
+                                                                <p class="fw-bold text-pink">{{ visit.total_duration }} мин</p>
+                                                            </div>
                                                             {% if visit.comment %}
                                                             <div class="mb-3">
                                                                 <h6>Комментарий клиента:</h6>
@@ -147,9 +157,15 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                                                            <a href="#" class="btn btn-success">Подтвердить</a>
-                                                            <a href="#" class="btn btn-danger">Отменить</a>
-                                                        </div>
+                                                            <form method="POST" action="{% url 'update_visit_status' visit.id 1 %}" class="d-inline">
+                                                                {% csrf_token %}
+                                                                <button type="submit" class="btn btn-success">Подтвердить</button>
+                                                            </form>
+                                                            <form method="POST" action="{% url 'update_visit_status' visit.id 2 %}" class="d-inline">
+                                                                {% csrf_token %}
+                                                                <button type="submit" class="btn btn-danger">Отменить</button>
+                                                            </form>
+                                                        </div>                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +176,7 @@
                             </table>
                         </div>
 
-                        <!-- Пагинация -->
+                        {% comment %} <!-- Пагинация -->
                         {% if is_paginated %}
                         <nav aria-label="Навигация по страницам" class="mt-4">
                             <ul class="pagination justify-content-center">
@@ -195,7 +211,7 @@
                                 {% endif %}
                             </ul>
                         </nav>
-                        {% endif %}
+                        {% endif %} {% endcomment %}
                     {% else %}
                         <div class="alert alert-info">
                             <i class="bi bi-info-circle-fill me-2"></i>Записей не найдено. Попробуйте изменить параметры поиска или фильтрации.

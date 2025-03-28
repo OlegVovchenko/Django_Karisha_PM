@@ -451,8 +451,19 @@
 
 /* Отзывы */
 .review-card {
-  padding: 2rem;
-  margin-bottom: 1.5rem;
+  height: 100%;
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-default);
+  transition: var(--transition-default);
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
 .review-rating {
@@ -460,7 +471,8 @@
 }
 
 .review-text {
-  color: var(--color-text);
+  flex-grow: 1;
+  margin-bottom: 1rem;
   line-height: 1.6;
 }
 
@@ -748,4 +760,48 @@ main {
 
 .table-hover tbody tr:hover {
   background-color: rgba(240, 101, 149, 0.05);
+}
+
+
+/* Стили для toast-сообщений */
+.toast {
+  margin-bottom: 0.75rem !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  max-width: 500px;
+  opacity: 0.95;
+}
+
+.toast:last-child {
+  margin-bottom: 0 !important;
+}
+
+.toast .toast-body {
+  color: white !important;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+}
+
+/* Стили для разных типов сообщений */
+.toast.bg-danger .toast-body {
+  background-color: #dc3545;
+}
+
+.toast.bg-success .toast-body {
+  background-color: #28a745;
+}
+
+.toast.bg-warning .toast-body {
+  background-color: #ffc107;
+  color: #212529 !important;
+}
+
+.toast.bg-info .toast-body {
+  background-color: #17a2b8;
+}
+
+/* Для сообщений без тегов */
+.toast:not([class*="bg-"]) .toast-body {
+  background-color: #17a2b8;
+  color: white !important;
 }

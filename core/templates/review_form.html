@@ -33,7 +33,8 @@
           
           <div class="form-floating mb-3">
             {{ form.master }}
-            <label for="{{ form.master.id_for_label }}">{{ form.master.label }}</label>
+            <label for="{{ form.master.id_for_label }}">{{ form.master.label }} (необязательно)</label>
+            <small class="form-text text-muted">Выберите мастера или оставьте пустым для общего отзыва о салоне</small>
             {% if form.master.errors %}
             <div class="invalid-feedback d-block">
               {{ form.master.errors }}

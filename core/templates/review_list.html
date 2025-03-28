@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Отзывы клиентов{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+  <h1 class="section-title text-center mb-4">Отзывы наших клиентов</h1>
+  <p class="section-subtitle text-center mb-5">Мы ценим мнение каждого клиента и стремимся стать лучше</p>
+  
+  <div class="row mb-4">
+    <div class="col-md-8 offset-md-2 text-center">
+      <a href="{% url 'review_create' %}" class="btn btn-pink">
+        <i class="bi bi-pencil-square me-2"></i>Оставить отзыв
+      </a>
+      <a href="/" class="btn btn-outline-secondary ms-2">
+        <i class="bi bi-house-heart me-2"></i>Вернуться на главную
+      </a>
+    </div>
+  </div>
+  
+  <div class="row">
+    {% for review in reviews %}
+    <div class="col-md-4 mb-4">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-rating">
+            {% for i in "12345" %}
+              {% if forloop.counter <= review.rating %}
+              <i class="bi bi-star-fill"></i>
+              {% else %}
+              <i class="bi bi-star"></i>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="review-date">{{ review.created_at|date:"d.m.Y" }}</div>
+        </div>
+        <div class="review-body">
+          <p class="review-text">{{ review.text }}</p>
+        </div>
+        <div class="review-footer">
+          <div class="review-author">{{ review.name }}</div>
+          {% if review.master %}
+          <div class="review-master">Мастер: {{ review.master.first_name }}</div>
+          {% else %}
+          <div class="review-master">Общий отзыв о салоне</div>
+          {% endif %}
+        </div>            
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <div class="alert alert-info">
+        <p>Пока нет отзывов. Будьте первым, кто оставит отзыв о нашем салоне!</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <!-- Пагинация -->
+  {% if is_paginated %}
+  <nav aria-label="Навигация по страницам" class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="Первая">
+          <span aria-hidden="true">&laquo;&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Предыдущая">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% endif %}
+      
+      <li class="page-item active" aria-current="page">
+        <span class="page-link">{{ page_obj.number }} из {{ paginator.num_pages }}</span>
+      </li>
+      
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Следующая">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ paginator.num_pages }}" aria-label="Последняя">
+          <span aria-hidden="true">&raquo;&raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock %}

@@ -72,9 +72,9 @@
       {% if messages %}
       <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
           {% for message in messages %}
-          <div class="toast show align-items-center text-white bg-{{ message.tags }} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast show align-items-center text-white bg-{{ message.tags }} border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
               <div class="d-flex">
-                  <div class="toast-body">
+                  <div class="toast-body" style="color: white !important; font-weight: 500;">
                       {{ message }}
                   </div>
                   <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -214,6 +214,36 @@
                 navbarToggler.click();
               }
             });
+          });
+    
+          // 5. Новый код для обработки toast-сообщений
+          const toasts = document.querySelectorAll('.toast.show');
+          
+          toasts.forEach(toast => {
+            const toastBody = toast.querySelector('.toast-body');
+            if (toastBody && (!toastBody.textContent || toastBody.textContent.trim() === '')) {
+              // Если сообщение пустое, скрываем его
+              toast.style.display = 'none';
+            } else {
+
+              // Проверяем, есть ли у toast класс цвета
+              if (!toast.classList.contains('bg-success') && 
+                  !toast.classList.contains('bg-danger') && 
+                  !toast.classList.contains('bg-warning') && 
+                  !toast.classList.contains('bg-info')) {
+                // Если нет, добавляем класс по умолчанию
+                toast.classList.add('bg-info');
+              }
+              // Иначе устанавливаем таймер для автоматического закрытия
+              setTimeout(() => {
+                const closeBtn = toast.querySelector('.btn-close');
+                if (closeBtn) {
+                  closeBtn.click();
+                } else {
+                  toast.classList.remove('show');
+                }
+              }, 15000); // 15 секунд
+            }
           });
         });
     </script>
