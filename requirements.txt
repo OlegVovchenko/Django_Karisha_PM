@@ -3,3 +3,4 @@ python-dotenv
 pillow
 mistalai
 python-telegram-bot
+django-jazzmin
