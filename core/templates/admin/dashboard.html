@@ -1,0 +1,241 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .stats-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .stats-card h3 {
+        margin-top: 0;
+        color: #333;
+        font-size: 18px;
+    }
+    .stats-value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d6336c;
+    }
+    .stats-label {
+        color: #666;
+        font-size: 14px;
+    }
+    .chart-container {
+        position: relative;
+        height: 250px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1>Статистика салона красоты "Karisha_PM"</h1>
+    
+    <div class="row">
+        <!-- Карточки с основными показателями -->
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h3>Всего визитов</h3>
+                <div class="stats-value">{{ statistics.total_visits }}</div>
+                <div class="stats-label">За последние 30 дней: {{ statistics.recent_visits }}</div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h3>Общий доход</h3>
+                <div class="stats-value">{{ statistics.total_revenue }} ₽</div>
+                <div class="stats-label">За последние 30 дней: {{ statistics.recent_revenue }} ₽</div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h3>Подтвержденные визиты</h3>
+                <div class="stats-value">{{ statistics.status_counts.1|default:"0" }}</div>
+                <div class="stats-label">{{ statistics.status_counts.1|default:"0"|floatformat:0 }}% от общего числа</div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="stats-card">
+                <h3>Выполненные визиты</h3>
+                <div class="stats-value">{{ statistics.status_counts.3|default:"0" }}</div>
+                <div class="stats-label">{{ statistics.status_counts.3|default:"0"|floatformat:0 }}% от общего числа</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Графики -->
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h3>Статусы визитов</h3>
+                <div class="chart-container">
+                    <canvas id="visitsStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h3>Популярные услуги</h3>
+                <div class="chart-container">
+                    <canvas id="popularServicesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Таблицы -->
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h3>Статистика по мастерам</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Мастер</th>
+                            <th>Количество визитов</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for master in statistics.visits_by_master %}
+                        <tr>
+                            <td>{{ master.master__first_name }} {{ master.master__last_name }}</td>
+                            <td>{{ master.count }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="stats-card">
+                <h3>Рейтинг мастеров</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Мастер</th>
+                            <th>Средний рейтинг</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for master in statistics.master_ratings %}
+                        <tr>
+                            <td>{{ master.master__first_name }} {{ master.master__last_name }}</td>
+                            <td>{{ master.avg_rating|floatformat:1 }} / 5</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">Нет данных</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Данные для графика статусов визитов
+        const statusLabels = {
+            0: 'Не подтверждена',
+            1: 'Подтверждена',
+            2: 'Отменена',
+            3: 'Выполнена'
+        };
+        
+        const statusCounts = [
+            {% for status, count in statistics.status_counts.items %}
+                {{ count }},
+            {% endfor %}
+        ];
+        
+        const statusColors = [
+            '#6c757d',  // Серый - Не подтверждена
+            '#28a745',  // Зеленый - Подтверждена
+            '#dc3545',  // Красный - Отменена
+            '#007bff'   // Синий - Выполнена
+        ];
+        
+        // График статусов визитов
+        const statusCtx = document.getElementById('visitsStatusChart').getContext('2d');
+        new Chart(statusCtx, {
+            type: 'pie',
+            data: {
+                labels: Object.values(statusLabels),
+                datasets: [{
+                    data: statusCounts,
+                    backgroundColor: statusColors,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+        
+        // Данные для графика популярных услуг
+        const serviceNames = [
+            {% for service in statistics.popular_services|slice:":5" %}
+                '{{ service.name }}',
+            {% endfor %}
+        ];
+        
+        const serviceCounts = [
+            {% for service in statistics.popular_services|slice:":5" %}
+                {{ service.visit_count }},
+            {% endfor %}
+        ];
+        
+        // График популярных услуг
+        const servicesCtx = document.getElementById('popularServicesChart').getContext('2d');
+        new Chart(servicesCtx, {
+            type: 'bar',
+            data: {
+                labels: serviceNames,
+                datasets: [{
+                    label: 'Количество заказов',
+                    data: serviceCounts,
+                    backgroundColor: '#f06595',
+                    borderColor: '#d6336c',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

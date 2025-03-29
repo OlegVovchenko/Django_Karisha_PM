@@ -3,11 +3,14 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views
+from core.admin_views import AdminDashboardView
 
 
 urlpatterns = (
     [
+        path('admin/dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),
         path('admin/', admin.site.urls),
+        
         path("", views.MainView.as_view(), name="main"),
         path("thanks/", views.ThanksView.as_view(), name="thanks"),
         path("visits/", views.VisitListView.as_view(), name="visit_list"),

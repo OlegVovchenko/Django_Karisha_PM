@@ -60,7 +60,7 @@ ROOT_URLCONF = 'karisha_pm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'core' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -189,11 +189,17 @@ JAZZMIN_SETTINGS = {
     
     # Пользовательские ссылки для добавления в боковое меню
     "custom_links": {
+        # Ссылка для всех приложений
+        "__all__": [{
+            "name": "Статистика салона", 
+            "url": "admin_dashboard", 
+            "icon": "fas fa-chart-line",
+        }],
+        # Существующие ссылки для приложения core
         "core": [{
             "name": "Вернуться на сайт", 
             "url": "/", 
             "icon": "fas fa-home",
-            "permissions": ["auth.view_user"]
         }]
     },
     
@@ -233,6 +239,18 @@ JAZZMIN_SETTINGS = {
     "dark_mode_theme": "darkly",
     "custom_css": None,
     "custom_js": None,
+    
+    # Добавляем пункт в верхнее меню
+    "topmenu_links": [
+        # Ссылка на главную страницу админки
+        {"name": "Главная", "url": "admin:index"},
+        
+        # Ссылка на дашборд
+        {"name": "Статистика", "url": "admin_dashboard"},
+        
+        # Ссылка на сайт
+        {"name": "Сайт", "url": "/", "new_window": True},
+    ],
 }
 
 # Настройки UI для Jazzmin

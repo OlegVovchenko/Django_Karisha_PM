@@ -49,10 +49,15 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/#reviews">Отзывы</a>
                     </li>
-                    <!-- Добавляем кнопку для администраторов -->
+                    <!-- Добавляем кнопки для администраторов-->
                     {% if user.is_staff %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'visit_list' %}">Управление записями</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">
+                            <i class="bi bi-gear"></i> Админ-панель
+                        </a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
