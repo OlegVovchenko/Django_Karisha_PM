@@ -139,3 +139,131 @@ MISTRAL_MODEL = os.getenv('MISTRAL_MODEL')
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 YOUR_PERSONAL_CHAT_ID = os.getenv('YOUR_PERSONAL_CHAT_ID')
+
+
+
+# Настройки Jazzmin
+JAZZMIN_SETTINGS = {
+    # Заголовок на странице входа (по умолчанию: "Django Administration")
+    "site_header": 'Салон красоты "Karisha_PM"',
+    
+    # Заголовок на главной странице админки (по умолчанию: "Site Administration")
+    "site_brand": 'Karisha_PM',
+    
+    # Логотип для вашего сайта, должен быть в статических файлах
+    "site_logo": "images/logo.png",
+    
+    # Логотип для страницы входа (по умолчанию: None)
+    "login_logo": None,
+    
+    # Логотип для страницы входа (маленький) (по умолчанию: None)
+    "login_logo_dark": None,
+    
+    # CSS-класс, который применяется к логотипу
+    "site_logo_classes": "img-circle",
+    
+    # Относительный путь к значку, который будет отображаться рядом с именем на странице администратора
+    "site_icon": None,
+    
+    # Приветственный текст на странице входа
+    "welcome_sign": "Добро пожаловать в панель администратора",
+    
+    # Авторские права
+    "copyright": 'Салон красоты "Karisha_PM" © 2024',
+    
+    # Ссылка на главную страницу сайта
+    "site_url": "/",
+    
+    # Модель пользователя (по умолчанию: auth.User)
+    "user_model": "auth.User",
+    
+    # Скрыть приложения из списка приложений (по умолчанию: [])
+    "hide_apps": [],
+    
+    # Скрыть модели из списка моделей (по умолчанию: [])
+    "hide_models": [],
+    
+    # Список приложений (и/или моделей), которые будут отображаться в верхней части бокового меню
+    # (по умолчанию: [])
+    "order_with_respect_to": ["core"],
+    
+    # Пользовательские ссылки для добавления в боковое меню
+    "custom_links": {
+        "core": [{
+            "name": "Вернуться на сайт", 
+            "url": "/", 
+            "icon": "fas fa-home",
+            "permissions": ["auth.view_user"]
+        }]
+    },
+    
+    # Пользовательские значки для приложений/моделей
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "core.Master": "fas fa-user-md",
+        "core.Service": "fas fa-concierge-bell",
+        "core.Visit": "fas fa-calendar-check",
+        "core.Review": "fas fa-comment",
+    },
+    
+    # Значки из FontAwesome (по умолчанию: {"auth": "fas fa-users-cog"})
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    
+    # Использовать ли UI с вкладками, False - использовать старый UI (по умолчанию: True)
+    "use_google_fonts_cdn": True,
+    
+    # Показывать ли пользовательские кнопки действий на всех страницах списка (по умолчанию: False)
+    "show_ui_builder": False,
+    
+    # Изменить связанные модальные окна (по умолчанию: {"auth.user": {"title": "User"}})
+    "related_modal_active": True,
+    
+    # Настройки UI
+    "changeform_format": "horizontal_tabs",  # horizontal_tabs (по умолчанию) или vertical_tabs
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs",
+    },
+    
+    # Настройки темы
+    "theme": "default",  # default, slate, darkly, solar, superhero
+    "dark_mode_theme": "darkly",
+    "custom_css": None,
+    "custom_js": None,
+}
+
+# Настройки UI для Jazzmin
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-pink",
+    "accent": "accent-pink",
+    "navbar": "navbar-pink navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-pink",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}

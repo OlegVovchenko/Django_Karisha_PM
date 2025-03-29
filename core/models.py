@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator, MinLengthValidator
 from datetime import timedelta
+from django.utils.safestring import mark_safe
 
 # Класс для мастеров
 class Master(models.Model):
@@ -103,6 +104,16 @@ class Visit(models.Model):
     def formatted_appointment_datetime(self):
         return self.appointment_datetime.strftime('%d.%m.%Y %H:%M')
 
+    def colored_status(self):
+        colors = {
+            0: '<span style="color: #6c757d;">Не подтверждена</span>',
+            1: '<span style="color: #28a745;">Подтверждена</span>',
+            2: '<span style="color: #dc3545;">Отменена</span>',
+            3: '<span style="color: #007bff;">Выполнена</span>',
+        }
+        return mark_safe(colors.get(self.status, ''))
+    colored_status.short_description = 'Статус'
+
     def check_availability(self):
         """Проверка, что мастер свободен в указанное время"""
         # Получаем время окончания текущей записи
@@ -157,6 +168,11 @@ class Review(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.rating}'
+
+    def stars_display(self):
+        stars = '★' * self.rating + '☆' * (5 - self.rating)
+        return stars
+    stars_display.short_description = 'Рейтинг'
 
     class Meta:
         verbose_name = "Отзыв"
