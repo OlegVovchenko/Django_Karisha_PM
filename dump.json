@@ -1,0 +1,1207 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-03-27T14:38:42.943Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "маникюр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-03-27T14:40:10.399Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "педикюр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-03-27T14:42:59.070Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "дизайн ногтей",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-03-27T14:43:46.572Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "укрепление ногтей",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-03-27T14:44:30.959Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "лечебные процедуры",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-03-27T14:45:21.856Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "6",
+    "object_repr": "медицинский педикюр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-03-27T14:45:56.475Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "7",
+    "object_repr": "SPA-процедуры",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-03-27T14:46:07.245Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Лиана Магомедова",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-03-27T14:52:05.671Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "чистка лица",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-03-27T14:52:44.283Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "пилинги",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-03-27T14:53:32.664Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "увлажняющие и питательные процедуры",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-03-27T14:54:08.156Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "SPA-ритуалы",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-03-27T14:54:23.779Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Алефтина Барабасова",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2025-03-27T14:56:09.526Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "увлажняющие и питательные процедуры",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0426\\u0435\\u043d\\u0430\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2025-03-27T14:56:17.976Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "увлажняющие и питательные процедуры",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2025-03-27T15:13:57.656Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "пудровые брови (ombre brows)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2025-03-27T15:14:46.064Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "13",
+    "object_repr": "микроблейдинг (волосковый метод)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2025-03-27T15:15:29.633Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "14",
+    "object_repr": "комбинированные брови",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2025-03-27T15:16:15.122Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "15",
+    "object_repr": "контур губ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2025-03-27T15:16:55.069Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "16",
+    "object_repr": "шотирование (акварельные губы)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2025-03-27T15:16:57.734Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Карина Ледова",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2025-03-27T15:17:20.854Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Карина Ледова",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0424\\u043e\\u0442\\u043e\\u0433\\u0440\\u0430\\u0444\\u0438\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2025-03-28T19:45:46.493Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Эльмира - +722352113",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2025-03-28T20:25:39.662Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Эльмира - 5",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2025-03-28T20:28:54.359Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "Агафья - 2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2025-03-28T21:15:30.465Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Наталья - 4",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2025-03-28T21:25:11.123Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "Валентина - 3",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2025-03-29T04:45:30.540Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Екатерина - +764342223",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2025-03-29T04:49:11.317Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "лечебные процедуры",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0440\\u043e\\u0434\\u043e\\u043b\\u0436\\u0438\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0441\\u0442\\u044c (\\u0432 \\u043c\\u0438\\u043d\\u0443\\u0442\\u0430\\u0445)\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Услуга",
+    "content_type": 7,
+    "codename": "add_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Услуга",
+    "content_type": 7,
+    "codename": "change_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Услуга",
+    "content_type": 7,
+    "codename": "delete_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Услуга",
+    "content_type": 7,
+    "codename": "view_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Мастер",
+    "content_type": 8,
+    "codename": "add_master"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Мастер",
+    "content_type": 8,
+    "codename": "change_master"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Мастер",
+    "content_type": 8,
+    "codename": "delete_master"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Мастер",
+    "content_type": 8,
+    "codename": "view_master"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Запись",
+    "content_type": 9,
+    "codename": "add_visit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Запись",
+    "content_type": 9,
+    "codename": "change_visit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Запись",
+    "content_type": 9,
+    "codename": "delete_visit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Запись",
+    "content_type": 9,
+    "codename": "view_visit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Отзыв",
+    "content_type": 10,
+    "codename": "add_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Отзыв",
+    "content_type": 10,
+    "codename": "change_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Отзыв",
+    "content_type": 10,
+    "codename": "delete_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Отзыв",
+    "content_type": 10,
+    "codename": "view_review"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$nvmdI3Ltnw1xrN8Dakg11s$057duvYYrxiYfY/tQ5y5VG9H9e6TBBCdX7fQWdoKbSg=",
+    "last_login": "2025-03-29T07:05:45.716Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "ad@ad.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-03-25T15:31:47.123Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "core",
+    "model": "service"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "core",
+    "model": "master"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "core",
+    "model": "visit"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "core",
+    "model": "review"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zeuepabdwizwoeciq27fet1no12zt93o",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlle8JeSPmewvN41DiBHipMKcXcSKQW0M_PeW8S0LjWunec4krgKEKdfhik_ue2CHqndJ5mntswjyj2Rh-1ymIhft6P9O6ip121tiJS_aIuIyqL1jm3RcPYI5FQADgEVbhAAOKeSddKGc9aOlCkWtPh8AeGXN_o:1tyQGH:bk90CWwS0cNhZ3w-mRjwMrbWfeVIhEmYuyQUkWYV3sQ",
+    "expire_date": "2025-04-12T07:05:45.817Z"
+  }
+},
+{
+  "model": "core.master",
+  "pk": 1,
+  "fields": {
+    "first_name": "Лиана",
+    "last_name": "Магомедова",
+    "phone": "+75910000001",
+    "address": "ул. Ленина, д.321, кв 18",
+    "photo": "masters/photos/manikur.jpg",
+    "is_active": true,
+    "services": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "core.master",
+  "pk": 2,
+  "fields": {
+    "first_name": "Алефтина",
+    "last_name": "Барабасова",
+    "phone": "+75093451243",
+    "address": "ул. Воскова, д. 123, кв 10",
+    "photo": "masters/photos/kosmetolog.jpg",
+    "is_active": true,
+    "services": [
+      8,
+      9,
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "core.master",
+  "pk": 3,
+  "fields": {
+    "first_name": "Карина",
+    "last_name": "Ледова",
+    "phone": "+75190000002",
+    "address": "ул. Панфилова, д.142",
+    "photo": "masters/photos/karisha_pm.jpg",
+    "is_active": true,
+    "services": [
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  }
+},
+{
+  "model": "core.service",
+  "pk": 1,
+  "fields": {
+    "name": "маникюр",
+    "description": "Профессиональный уход за ногтями и кожей рук: коррекция формы, обработка кутикулы, покрытие (лак, гель-лак, гель). Виды: классический, аппаратный, комбинированный. Качественные материалы, стерильные инструменты. Аккуратный вид, долговечность, подходит для любого возраста и типа ногтей. Подчеркните стиль и завершите образ ухоженными руками!",
+    "price": "1500.00",
+    "duration": 90,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 2,
+  "fields": {
+    "name": "педикюр",
+    "description": "Профессиональный уход за стопами и ногтями: обработка кутикулы, удаление огрубевшей кожи, коррекция формы, покрытие (лак, гель-лак). Виды: классический, аппаратный, SPA-педикюр. Качественные материалы, стерильные инструменты. Ухоженные стопы, комфорт, профилактика проблем. Подходит для любого возраста и типа кожи. Подарите ногам легкость, здоровье и безупречный вид!",
+    "price": "1000.00",
+    "duration": 60,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 3,
+  "fields": {
+    "name": "дизайн ногтей",
+    "description": "Роспись, стемпинг, фольга, слайдеры, стразы, градиент, «кошачий глаз», 3D-дизайн.",
+    "price": "2000.00",
+    "duration": 60,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 4,
+  "fields": {
+    "name": "укрепление ногтей",
+    "description": "Биогель, IBX-система, акриловая пудра, кератиновое восстановление.",
+    "price": "1000.00",
+    "duration": 45,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 5,
+  "fields": {
+    "name": "лечебные процедуры",
+    "description": "Парафинотерапия, массаж рук, спа-уход, запечатывание ногтей, лечение ломких ногтей.",
+    "price": "1500.00",
+    "duration": 30,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 6,
+  "fields": {
+    "name": "медицинский педикюр",
+    "description": "Коррекция вросших ногтей, обработка грибковых поражений, ортониксия.",
+    "price": "2000.00",
+    "duration": 60,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 7,
+  "fields": {
+    "name": "SPA-процедуры",
+    "description": "Солевые ванночки, пилинги, обертывания, массаж стоп, маски с увлажнением.",
+    "price": "2500.00",
+    "duration": 90,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 8,
+  "fields": {
+    "name": "чистка лица",
+    "description": "Механическая, ультразвуковая или комбинированная: удаление загрязнений, черных точек, воспалений.",
+    "price": "2000.00",
+    "duration": 45,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 9,
+  "fields": {
+    "name": "пилинги",
+    "description": "Химические (AHA, BHA), ферментные, лазерные: обновление кожи, выравнивание тона, борьба с пигментацией.",
+    "price": "2500.00",
+    "duration": 60,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 10,
+  "fields": {
+    "name": "увлажняющие и питательные процедуры",
+    "description": "Альгинатные маски, гиалуроновая кислота, коллагеновые программы: восстановление, лифтинг, сияние.",
+    "price": "1000.00",
+    "duration": 45,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 11,
+  "fields": {
+    "name": "SPA-ритуалы",
+    "description": "Расслабляющий массаж лица, ароматерапия, многоэтапный уход для глубокого восстановления.",
+    "price": "2000.00",
+    "duration": 90,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 12,
+  "fields": {
+    "name": "пудровые брови (ombre brows)",
+    "description": "Мягкий градиентный эффект «напыления», как от косметической пудры. Идеально для любителей естественности. Длительность: 1–2 года.",
+    "price": "3000.00",
+    "duration": 120,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 13,
+  "fields": {
+    "name": "микроблейдинг (волосковый метод)",
+    "description": "Тонкие, реалистичные штрихи, имитирующие натуральные волоски. Корректирует форму, заполняет проплешины. Длительность: 1–1,5 года.",
+    "price": "3500.00",
+    "duration": 120,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 14,
+  "fields": {
+    "name": "комбинированные брови",
+    "description": "Сочетание микроблейдинга и пудрового эффекта. Объем + естественная густота. Длительность: 1–2 года.",
+    "price": "5000.00",
+    "duration": 150,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 15,
+  "fields": {
+    "name": "контур губ",
+    "description": "Четкая или мягкая обводка для коррекции асимметрии, увеличения объема. Подчеркивает естественную форму. Длительность: 1–3 года.",
+    "price": "2500.00",
+    "duration": 90,
+    "image": ""
+  }
+},
+{
+  "model": "core.service",
+  "pk": 16,
+  "fields": {
+    "name": "шотирование (акварельные губы)",
+    "description": "Нежное тонирование с эффектом «помады». Равномерный цвет, легкий объем. Длительность: 1–2 года.",
+    "price": "5500.00",
+    "duration": 120,
+    "image": ""
+  }
+},
+{
+  "model": "core.visit",
+  "pk": 1,
+  "fields": {
+    "name": "Екатерина",
+    "phone": "+764342223",
+    "comment": "Хочу прекрасный педикюр.",
+    "created_at": "2025-03-28T17:31:06.226Z",
+    "status": 3,
+    "master": 1,
+    "appointment_datetime": "2025-03-29T17:30:00Z",
+    "services": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "core.visit",
+  "pk": 3,
+  "fields": {
+    "name": "Эльмира",
+    "phone": "+723234239",
+    "comment": "",
+    "created_at": "2025-03-28T20:05:50.435Z",
+    "status": 1,
+    "master": 1,
+    "appointment_datetime": "2025-03-29T19:45:00Z",
+    "services": [
+      1,
+      5
+    ]
+  }
+},
+{
+  "model": "core.visit",
+  "pk": 4,
+  "fields": {
+    "name": "Эльза",
+    "phone": "+744724245",
+    "comment": "",
+    "created_at": "2025-03-28T20:23:11.538Z",
+    "status": 1,
+    "master": 2,
+    "appointment_datetime": "2025-03-29T18:50:00Z",
+    "services": [
+      8,
+      10
+    ]
+  }
+},
+{
+  "model": "core.visit",
+  "pk": 5,
+  "fields": {
+    "name": "Наталья",
+    "phone": "+823242982",
+    "comment": "Хочу бровки и губки.",
+    "created_at": "2025-03-28T21:12:10.237Z",
+    "status": 0,
+    "master": 3,
+    "appointment_datetime": "2025-03-29T11:00:00Z",
+    "services": [
+      12,
+      16
+    ]
+  }
+},
+{
+  "model": "core.review",
+  "pk": 1,
+  "fields": {
+    "name": "Олег",
+    "text": "Горите в аду, меня достало работать на ваш салон, потому что жена постоянно все наши деньги спускает у вас! Что б вы под землю провалились",
+    "master": 1,
+    "rating": 1,
+    "created_at": "2025-03-28T16:04:33.943Z",
+    "status": 3
+  }
+},
+{
+  "model": "core.review",
+  "pk": 2,
+  "fields": {
+    "name": "Эльмира",
+    "text": "Мне очень понравился салон, прекрасный дизайн, любезный администратор, чуткие мастера, всем буду рекомендовать его.",
+    "master": null,
+    "rating": 5,
+    "created_at": "2025-03-28T20:24:42.385Z",
+    "status": 0
+  }
+},
+{
+  "model": "core.review",
+  "pk": 3,
+  "fields": {
+    "name": "Агафья",
+    "text": "Салон не плохой, но я осталась не довольна работой мастера Лианы. Она не выполнила те пожелания, которые я озвучила перед процедурами.",
+    "master": 1,
+    "rating": 2,
+    "created_at": "2025-03-28T20:28:26.145Z",
+    "status": 0
+  }
+},
+{
+  "model": "core.review",
+  "pk": 4,
+  "fields": {
+    "name": "Наталья",
+    "text": "Мне понравилось обслуживание в вашем салоне. Приятно, что подают горячие и прохладительные напитки, так как процедуры занимают значительное время.",
+    "master": null,
+    "rating": 4,
+    "created_at": "2025-03-28T21:15:08.250Z",
+    "status": 0
+  }
+},
+{
+  "model": "core.review",
+  "pk": 5,
+  "fields": {
+    "name": "Валентина",
+    "text": "Нет ничего уникального, обычный салон - как и все остальные. Дизайн внутри, конечно, красивый.",
+    "master": 3,
+    "rating": 3,
+    "created_at": "2025-03-28T21:24:52.721Z",
+    "status": 0
+  }
+}
+]
